@@ -1,19 +1,19 @@
 {
   "compilerOptions": {
-    "target": "ESNext",
-    "lib": ["ESNext", "DOM"],
-    "useDefineForClassFields": true,
-    "module": "ESNext",
-    "moduleResolution": "Node",
+    "target": "esnext",
+    "jsx": "preserve",
+    "lib": ["esnext", "DOM"],
+    "module": "esnext",
+    "moduleResolution": "bundler",
     "resolveJsonModule": true,
+    "types": [
+      "unplugin-vue-router/client",
+      "vite/client"
+    ],
     "strict": true,
-    "noImplicitReturns": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    "noEmit": true,
-    "sourceMap": true,
+    "strictNullChecks": true,
     "esModuleInterop": true,
-    "isolatedModules": true,
+    "skipDefaultLibCheck": true,
     "skipLibCheck": true
   }
 }

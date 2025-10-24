@@ -1,11 +1,11 @@
 import { defineConfig } from 'vite'
+import { PluginStart } from 'vite-plugin'
 import Inspect from 'vite-plugin-inspect'
-import Starter from '../src'
 
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
     Inspect(),
-    Starter(),
+    PluginStart(),
   ],
 })
