@@ -44,6 +44,10 @@
     "typecheck": "tsc --noEmit",
     "release": "bumpp package.json --commit --push --tag && pnpm -r publish --access public"
   },
+  "dependencies": {
+    "ansis": "^4.2.0",
+    "sirv": "^3.0.2"
+  },
   "devDependencies": {
     "@antfu/eslint-config": "catalog:lint",
     "@types/node": "catalog:types",
@@ -66,9 +70,5 @@
     "vitest": "catalog:test",
     "vue": "catalog:frontend",
     "vue-router": "catalog:frontend"
-  },
-  "dependencies": {
-    "ansis": "^4.2.0",
-    "sirv": "^3.0.2"
   }
 }
