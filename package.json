@@ -46,7 +46,8 @@
   },
   "dependencies": {
     "ansis": "^4.2.0",
-    "sirv": "^3.0.2"
+    "sirv": "^3.0.2",
+    "vite-dev-rpc": "^1.1.0"
   },
   "devDependencies": {
     "@antfu/eslint-config": "catalog:lint",
@@ -67,6 +68,7 @@
     "unplugin-vue-components": "catalog:plugins",
     "unplugin-vue-router": "catalog:plugins",
     "vite": "catalog:frontend",
+    "vite-hot-client": "^2.1.0",
     "vitest": "catalog:test",
     "vue": "catalog:frontend",
     "vue-router": "catalog:frontend"
