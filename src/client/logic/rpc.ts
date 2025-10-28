@@ -6,7 +6,7 @@ import { createHotContext } from 'vite-hot-client'
 const base = `${location.pathname.split('/__client')[0] || ''}/`.replace(/\/\//g, '/')
 const hot = createHotContext('/___', base)
 
-export const rpc = createRPCClient<any, RpcFunctions>(
+export const rpc = createRPCClient<RpcFunctions, RpcFunctions>(
   'vite-plugin-client',
   hot,
 )

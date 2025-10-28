@@ -6,7 +6,7 @@ defineOptions({
   name: 'IndexPage',
 })
 
-const fileCount = ref<number | null>(null)
+const fileCount = ref<number>()
 const loading = ref(true)
 const error = ref<string>()
 
