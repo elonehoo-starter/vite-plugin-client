@@ -6,5 +6,5 @@ export interface Options {
 }
 
 export interface RpcFunctions {
-  getProjectFileCount(): Promise<number>
+  getProjectFileCount: () => Promise<number>
 }
