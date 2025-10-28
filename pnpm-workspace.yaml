@@ -27,6 +27,9 @@ catalogs:
     unplugin-vue-components: ^30.0.0
     unplugin-vue-router: ^0.16.0
     vite-plugin-inspect: ^11.3.3
+  prev:
+    ansis: ^4.2.0
+    sirv: ^3.0.2
   test:
     '@vitest/ui': ^4.0.2
     vitest: ^4.0.2

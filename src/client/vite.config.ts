@@ -40,7 +40,6 @@ export default defineConfig({
 
   optimizeDeps: {
     exclude: [
-      'vite-hot-client',
       'diff-match-patch-es',
     ],
   },
