@@ -1,26 +1,11 @@
 <script setup lang="ts">
-import { onMounted, ref } from 'vue'
-import { rpc } from '../logic/rpc'
+import { infoFetch } from '../logic/fetch'
 
 defineOptions({
   name: 'IndexPage',
 })
 
-const fileCount = ref<number>()
-const loading = ref(true)
-const error = ref<string>()
-
-onMounted(async () => {
-  try {
-    fileCount.value = await rpc.getProjectFileCount()
-  }
-  catch (err) {
-    error.value = err instanceof Error ? err.message : String(err)
-  }
-  finally {
-    loading.value = false
-  }
-})
+const number = infoFetch.data
 </script>
 
 <template>
@@ -28,15 +13,9 @@ onMounted(async () => {
     <h1 class="text-2xl font-semibold">
       Vite Plugin Starter
     </h1>
-    <p v-if="loading" class="text-gray-500">
-      Loading project information...
-    </p>
-    <p v-else-if="error" class="text-red-500">
-      Failed to fetch project file count: {{ error }}
-    </p>
-    <p v-else class="text-lg">
+    <p class="text-lg">
       This project currently contains
-      <span class="font-bold">{{ fileCount }}</span>
+      <span class="font-bold">{{ number }}</span>
       files.
     </p>
   </div>

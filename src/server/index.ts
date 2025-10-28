@@ -1,7 +1,6 @@
 import type { Plugin } from 'vite'
 import type { RpcFunctions } from '../type'
 import sirv from 'sirv'
-import { createRPCServer } from 'vite-dev-rpc'
 import { DIR_CLIENT } from '../dirs'
 import { countFiles } from './utils/count-files'
 
@@ -12,25 +11,32 @@ export function vitePluginClient(): Plugin {
     name: 'vite-plugin-client',
     enforce: 'pre',
     configureServer(server) {
-      const base = server.config.base || '/'
+      const baseUrl = '__client'
 
       // Serve the lightweight client UI (optional) at /__client
-      server.middlewares.use(`${base}__client`, sirv(DIR_CLIENT, {
+      server.middlewares.use(`/${baseUrl}`, sirv(DIR_CLIENT, {
         single: true,
         dev: true,
       }))
 
-      const rpc: RpcFunctions = {
-        async getProjectFileCount() {
-          return await countFiles(server.config.root)
-        },
-      }
+      server.middlewares.use(`/${baseUrl}_api`, async (req, res, next) => {
+        if (!req.url) {
+          return next()
+        }
 
-      createRPCServer<Record<string, never>, RpcFunctions>(
-        'vite-plugin-client',
-        server.ws,
-        rpc,
-      )
+        if (req.url === '/') {
+          const fileList = await countFiles(server.config.root)
+          const info = {
+            count: fileList,
+          }
+          res.setHeader('Content-Type', 'application/json')
+          res.write(JSON.stringify(info))
+          res.end()
+          return
+        }
+
+        next()
+      })
     },
   }
 }
